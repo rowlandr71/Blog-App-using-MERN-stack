@@ -48,13 +48,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const UserBlogs = () => {
+  const backendURL = process.env.BACKEND_URL || 'localhost';
   const classes = useStyles();
   const [user, setUser] = useState();
   const id = localStorage.getItem("userId");
 
   const sendRequest = async () => {
     const res = await axios
-      .get(`http://localhost:5000/api/blogs/user/${id}`)
+      .get(`http://${backendURL}:5000/api/blogs/user/${id}`)
       .catch((err) => console.log(err));
     const data = await res.data;
     return data;
@@ -65,7 +66,7 @@ const UserBlogs = () => {
   }, []);
 
   const handleDelete = (blogId) => {
-    axios.delete(`http://localhost:5000/api/blogs/${blogId}`).then(() => {
+    axios.delete(`http://${backendURL}:5000/api/blogs/${blogId}`).then(() => {
       sendRequest().then((data) => setUser(data.user));
     });
   };

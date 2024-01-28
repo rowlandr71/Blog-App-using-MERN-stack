@@ -22,8 +22,10 @@ const AddBlogs = () => {
     }));
   };
   const sendRequest = async () => {
+
+    const backendURL = process.env.BACKEND_URL || 'localhost';
     const res = await axios
-      .post("http://localhost:5000/api/blogs/add", {
+      .post(`http://${backendURL}:5000/api/blogs/add`, {
         title: inputs.title,
         desc: inputs.description,
         img: inputs.imageURL,

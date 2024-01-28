@@ -21,8 +21,9 @@ const Login = () => {
     }));
   };
   const sendRequest = async (type = "login") => {
+    const backendURL = process.env.BACKEND_URL || 'localhost';
     const res = await axios
-      .post(`http://localhost:5000/api/users/${type}`, {
+      .post(`http://${backendURL}:5000/api/users/${type}`, {
         name: inputs.name,
         email: inputs.email,
         password: inputs.password,

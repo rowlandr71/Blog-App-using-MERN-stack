@@ -6,6 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 const labelStyles = { mb: 1, mt: 2, fontSize: "24px", fontWeight: "bold" };
 
 const BlogDetail = () => {
+  const backendURL = process.env.BACKEND_URL || 'localhost';  
   const navigate = useNavigate();
   const [blog, setBlog] = useState();
   const id = useParams().id;
@@ -19,7 +20,7 @@ const BlogDetail = () => {
   };
   const fetchDetails = async () => {
     const res = await axios
-      .get(`http://localhost:5000/api/blogs/${id}`)
+      .get(`http://${backendURL}:5000/api/blogs/${id}`)
       .catch((err) => console.log(err));
     const data = await res.data;
     return data;
@@ -35,7 +36,7 @@ const BlogDetail = () => {
   }, [id]);
   const sendRequest = async () => {
     const res = await axios
-      .put(`http://localhost:5000/api/blogs/update/${id}`, {
+      .put(`http://${backendURL}:5000/api/blogs/update/${id}`, {
         title: inputs.title,
         description: inputs.description,
       })

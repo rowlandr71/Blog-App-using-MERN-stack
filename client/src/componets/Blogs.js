@@ -5,8 +5,9 @@ import Blog from "./Blog";
 const Blogs = () => {
   const [blogs, setBlogs] = useState();
   const sendRequest = async () => {
+    const backendURL = process.env.BACKEND_URL || 'localhost';
     const res = await axios
-      .get("http://localhost:5000/api/blogs")
+      .get(`http://${backendURL}:5000/api/blogs`)
       .catch((err) => console.log(err)); 
     const data = await res.data;
     return data;
