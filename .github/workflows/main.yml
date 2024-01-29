@@ -20,7 +20,7 @@ jobs:
       uses: actions/checkout@v2
     - name: install kubectl
       run: |
-        snap install kubectl --classic
+        sudo snap install kubectl --classic
         kubectl version --client
 
     - name: Configure AWS credentials for kubectl
