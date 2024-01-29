@@ -6,8 +6,8 @@ on:
 
 env:
   AWS_REGION: us-east-1                  # set this to your preferred AWS region, e.g. us-west-1
-  BACKEND_ECR_REPOSITORY: 362231138751.dkr.ecr.us-east-1.amazonaws.com/blogapp-backend:latest
-  FRONTEND_ECR_REPOSITORY: 362231138751.dkr.ecr.us-east-1.amazonaws.com/blogapp-frontend:latest
+  BACKEND_ECR_REPOSITORY: 362231138751.dkr.ecr.us-east-1.amazonaws.com/blogapp-backend
+  FRONTEND_ECR_REPOSITORY: 362231138751.dkr.ecr.us-east-1.amazonaws.com/blogapp-frontend
 
 permissions:
   contents: read
