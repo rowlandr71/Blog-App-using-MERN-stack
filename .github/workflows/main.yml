@@ -43,7 +43,7 @@ jobs:
         # Build a docker container and
         # push it to ECR so that it can
         # be deployed to ECS.
-        ls -al
+        ls client/Dockerfile
         docker build -t $BACKEND_ECR_REPOSITORY:$IMAGE_TAG client/Dockerfile
         docker push $BACKEND_ECR_REPOSITORY:$IMAGE_TAG
         docker build -t $FRONTEND_ECR_REPOSITORY:$IMAGE_TAG server/Dockerfile
