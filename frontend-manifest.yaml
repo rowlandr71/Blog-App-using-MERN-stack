@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blogapp-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: blogapp-frontend
+  template:
+    metadata:
+      labels:
+        app: blogapp-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: 362231138751.dkr.ecr.us-east-1.amazonaws.com/blogapp-frontend
+          ports:
+            - containerPort: 3000
+          env:
+            - name: BACKEND_URL
+              value: "blogapp-backend-service"  # Service name of the backend app
+              
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: blogapp-frontend-service
+spec:
+  selector:
+    app: blogapp-frontend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+  type: LoadBalancer  # Change this if you are using a different type of service
+

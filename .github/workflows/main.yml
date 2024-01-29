@@ -52,4 +52,5 @@ jobs:
     - name: Deploy to EKS
       run: |
         aws eks update-kubeconfig --name tech-eks --region $AWS_REGION
-        kubectl apply -f your-kubernetes-manifests.yaml
+        kubectl apply -f frontend-manifest.yaml
+        kubectl apply -f backend-manifest.yaml
