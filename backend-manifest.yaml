@@ -19,7 +19,7 @@ spec:
             - containerPort: 5000
           env:
             - name: MONGODB_URI
-              value: "mongodb-service:27017"  # Service name of the MongoDB deployment
+              value: "mongodb-service"  # Service name of the MongoDB deployment
 
 ---
 
